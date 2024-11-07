@@ -87,8 +87,10 @@ def imprimir_inventario(inventário):
 def verificar_quantidade(inventário, item):
     if item in inventário and inventário[item] >= 1:
         print(f"Você possui pelo menos 1 unidade de {item}.")
+        return True
     else:
         print(f"Você não possui {item} ou a quantidade é zero.")
+        return False
 
 def adicionar_item(inventário, item, quantidade):
     # Se o item já está no inventário, apenas aumenta a quantidade
@@ -98,10 +100,12 @@ def adicionar_item(inventário, item, quantidade):
     else:
         inventário[item] = quantidade
     print(f"{quantidade} unidades de {item} foram adicionadas.")
+"""
+Usando a função para adicionar 20 munições
+adicionar_item(inventario, "munição", 20)
+print(f"Agora você tem {inventario['munição']} munições.")
+"""
 
-# Usando a função para adicionar 20 munições
-#adicionar_item(inventario, "munição", 20)
-#print(f"Agora você tem {inventario['munição']} munições.")
 
 #menu do jogo
 def menu():
@@ -249,8 +253,11 @@ while resposta1 not in "continuar":
     elif resposta1 == "interagir":
        interaçoes = input("com o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\n") 
        #usado para ver o que tem dentro da gaveta
-       if interaçoes == "gaveta":
-          if "pistola[2]" in inventário:
+       if interaçoes == "gaveta\n":
+               #aqui já foi uma farm infinita de itens(bons tempos que não voltam mais)
+         if verificar_quantidade(inventário, "pistola[2]") and verificar_quantidade(inventário, "faca[1]"):
+            print("\nNão tem nada aqui(NÃO INSISTA!)\n")
+         elif "pistola[2]" in inventário:
            print("você abre a gaveta, tem uma uma faca dentro.")
            yesnot = input("o que você quer pegar?\nfaca\n\nOBS: digite exatamente como escrito acima para que prossiga\n\n")
            if yesnot == "faca":
@@ -258,7 +265,7 @@ while resposta1 not in "continuar":
             adicionar_item(inventário, "faca[1]", 1)
             print(f"Agora você tem {inventário['faca[1]']}")
             resposta1 = input("O que quer fazer?\n")
-          elif "faca[2]" in inventário:
+         elif "faca[1]" in inventário:
              print("você abre a gaveta, tem uma pistola dentro.")
              yesnot = input("o que você quer pegar?\npistola\n\nOBS: digite exatamente como escrito acima para que prossiga\n\n")
              if yesnot == "pistola":
@@ -266,7 +273,8 @@ while resposta1 not in "continuar":
                adicionar_item(inventário, "pistola[2]", 1)
                print(f"Agora você tem {inventário['pistola[2]']}")
                resposta1 = input("O que quer fazer?\n")
-          else:
+
+         else:
              print("você abre a gaveta, tem uma pistola e uma faca dentro.")
              yesnot = input("o que você quer pegar?\nfaca\npistola\n\nOBS: digite exatamente como escrito acima para que prossiga\n")
              if yesnot == "pistola":
