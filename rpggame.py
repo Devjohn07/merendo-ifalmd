@@ -1,84 +1,24 @@
 import random
+import time
 
-inventário = {}
-vitalidade, força, reaçao, arcano = 10, 1, 1, 1
-weapon = "nenhuma"
 interagir = 0
-pontos = 0
+inventário = {}
+resistencia, vitalidade, força, reaçao, arcano =  1, 10, 1, 1, 1
+pontos = 10
+weapon = "nenhuma"
 
 def girarD20():
    global valor_aleatorio
    valor_aleatorio = random.randint(1, 20)
-   print(f"""                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                    ..MM                                                                    
-                                                                  @@########                                                                
-                                                              MM####mm--##  ##@@                                                            
-                                                          ::##mm        mm##    ##++                                                        
-                                                        ##@@              ####    ++##mm                                                    
-                                                    ..        ##            @@##      MM##mm                                                
-                                                --##--      ##--              ##++        @@##                                              
-                                              ####        @@++                  ##--        ..##MM                                          
-                                          MM##++        MM@@  mm                ::##          ::MM##--                                      
-                                      mm######        ::##    ############mm      MM##    mm    ##  MM@@                                    
-                                  ..######mm--####    ##      ##        ##          ##@@  MM##..::++MM--mm@@                                
-                                MM##@@##  ##MM  ##  ##                  ##            ####--  ##  ####    ####mm                            
-                            ..##mmmm++  MM--  MM..@@++                ##++              ##mm    ##  --######  mm##..                        
-                          ::##--##::  @@    ::@@MM@@                  ##                  ##--    ##              ##mm                      
-                      --##MM      ::  --..MMMM  ##                  ::##                  ..##..    ####            MM##                    
-                    MM##..            ++mm  ..##                    ##                      mm##    @@                --##::                
-                  @@##                      ##..                    ##                        @@##                        mmmm              
-                  ++                      ##++                    @@##                          ##mm                  ::####mm              
-                MM..##                  mm##                                                      ##--              ####    mm              
-              ..##  ::####..          ++##                                                        ..##          @@##++      ##              
-              --MM      ++####        ##                                                            ..++  ..@@####          ##              
-              ++++          --##@@..::                                                                mm####                ##              
-              ::++              ..@@##############################################    ##############@@MM##                  @@              
-                mm                ++##..                                                                ##--                --              
-                MM                @@@@::                                                              ######                ..              
-              ++mm  mmmm@@        ##  ##                                                            ++##  ##..    --####    ##              
-              ::++..##  ##            MMMM                                                          ##    mm@@    ##  mm..  ##              
-              --MM##  ::++              ##                    mm::      ####MM                    ##++      ##    --  mm++  ##              
-              ..##--  ##        ##      mm##              ..##--##..  mmMM  ##                  --##        @@..      MMmm  ##              
-              ..##    ##      --##        ##::            MM    ##..  ##..  MM::                ##          --MM      @@MM####              
-                MM######@@    ##::        ::##                  ##    ##    ++MM              MMMM            ##          @@##              
-              --@@  @@::      ##            ##@@              @@++    ##    mmMM              ##              ::--        @@##              
-              --##  ##      ##++            ..##            ++##      ##    mm++            @@++                          ::##              
-              --@@++@@      ##                @@@@        ..##..      ..MM  ##            --##                  @@    mm  @@##              
-                ####mm    ::##                  ##::      ############  ####MM            @@..                    ++    ######              
-                @@  --    ##                    ::##      ..----..                      --##                      ##        ##              
-                ##        ##            ..##      ##MM                                  ##..    ....    --@@      mmMM      ##              
-                ##      @@mm  mm@@    mm++##        ##--                              ++MM      ##++    ##@@      --##      ##              
-                ##      ##    ##@@    @@  ##        mm##                              ##      @@##        @@        ##..    ##              
-                MM    ..##  ..::@@    ##  ##          ##::                          ##--      mm##        ++        ##mm    ##              
-                      ##..  --  ##  ..##++##mm..      --##                        --##          ##      ++--          ##    ##              
-                      ##        ##    ..  ++::          ##MM                      @@            mm      ::            ##..  ##              
-                ++  MM++        ##          ++            ##..                    --            ::      @@            MM@@  ##              
-                ##  ##          ##          ++            ++##                  @@..          @@      --##MM..        --##  ##              
-                ##..@@        @@##MM        @@              ##--              ..##          MM####    ......            ##  ##              
-                ##@@--        ::            ##..              ##              ##..                                      ##::##              
-                ####                        ##@@              MMMM          @@MM                                        ..##@@              
-                ##                                              mm        ..##                                            ++..              
-                @@####@@..                                                ##--                                        ++    ..              
-                  MM####mm######MM::                              mmMM  ++##                            --mmMM@@####@@####                  
-                    ::##@@    ..MM@@@@####      ..--                ##  ##                  ..@@########@@MM++    MM##::                    
-                        ####::                  ::######@@mm::        @@mm      ..mm@@@@##    ..              ++##MM                        
-                          --####..        --@@##--      ::mmMM####################MMmm..::::::            --####..                          
-                              mm##MM      ##    ####                  ##              ::##@@            ####::                              
-                                  MM##    MM::  MM####--            ..##          --##@@    ++##--  MM##++                                  
-                                      MM    ####MMMM  ##            ..##      mm####    ..##--  ##::                                        
-                                          ----++##    ::##..        ..##        ##      mm::  ##++                                          
-                                            ####      ..##          --##          ##--    ##                                                
-                                              --##mm  @@..          --##          ##    MM##                                                
-                                                  @@##--            ..##          @@++####..                                                
-                                                      ####--        ..##        --####--                                                    
-                                                        --####::      ##    ++####::                                                        
-                                                            --####--  ##mm####                                                              
-                                                                --######MM..                                                                
-                                                                    ..                                                                      
-                                                                                                                                            
-\n UM NÚMERO ALEATÓRIO ENTRE 1 E 20 SERÁ GERADO, se o número total somado com o Bonûs que você possuir for maior que 10, você irá passar no teste e vai se dar bem, se não, você se ferra\n O número que caiu foi {valor_aleatorio}""")
+   print(f'\n"um dado foi rolado para testar a sua sorte"\n')
+
+def usar_atributo(valor):
+   atributo = input("Qual atributo deseja usar?\nVITALIDADE: Reduz o dano recebido\nFORÇA: Adiciona dano a armas corpo-a-corpo, porém, diminui a chance de acerto\nreação: Dependendo, você pode desviar do ataque eminente, porém existe a chance de n desviar e receber dano completo\n")
+   if atributo == "resistencia":
+      total = resistencia + valor
+      print(f"Vou girar um d20+{resistencia}") 
+      print(f"você tirou {total} no dado!")
+
 def imprimir_inventario(inventário):
     print("Inventário:")
     for item, quantidade in inventário.items():
@@ -86,10 +26,8 @@ def imprimir_inventario(inventário):
 
 def verificar_quantidade(inventário, item):
     if item in inventário and inventário[item] >= 1:
-        print(f"Você possui pelo menos 1 unidade de {item}.")
         return True
     else:
-        print(f"Você não possui {item} ou a quantidade é zero.")
         return False
 
 def adicionar_item(inventário, item, quantidade):
@@ -99,23 +37,21 @@ def adicionar_item(inventário, item, quantidade):
     # Caso o item não exista, ele é adicionado com a quantidade informada
     else:
         inventário[item] = quantidade
-    print(f"{quantidade} unidades de {item} foram adicionadas.")
+    print(f"\n{quantidade} unidades de {item} foram adicionadas.")
 """
 Usando a função para adicionar 20 munições
 adicionar_item(inventario, "munição", 20)
 print(f"Agora você tem {inventario['munição']} munições.")
 """
 
-
 #menu do jogo
 def menu():
-   global vitalidade, força, reaçao, arcano
-   vitalidade, força, reaçao, arcano =  10, 1, 1, 1
-   global pontos
-   pontos = 0
-   global weapon
-   weapon = "nenhuma"
+
+
    while resposta1 not in ("continuar", "interagir", "atacar", "usar atributo", "comandos"):
+      global weapon
+      global pontos
+      global resistencia, vitalidade, força, reaçao, arcano
       print("---------------------------------------------------------------------------------------------------------------------------")
       print("""                               __  __ ______ _   _ _    _ 
                               |  \/  |  ____| \ | | |  | |
@@ -128,7 +64,7 @@ def menu():
 
       #mostra as opções de menu, atributos e itens  no inventário
       {imprimir_inventario(inventário)}
-      print(f" \nATRIBUTOS:\n\t--------------------------------\n\t\tvitalidade: {vitalidade}\n\t--------------------------------\n\t\t  força: {força}\n\t--------------------------------\n\t\t  reação: {reaçao}\n\t--------------------------------\n\t\t  arcano: {arcano}\n\t--------------------------------\n Você tem {pontos} pontos para gastar nos atributos")
+      print(f" \nATRIBUTOS:\n\t--------------------------------\n\t\tvitalidade: {vitalidade}\n\t--------------------------------\n\t\tresistencia: {resistencia}\n\t--------------------------------\n\t\tforça: {força}\n\t--------------------------------\n\t\treação: {reaçao}\n\t--------------------------------\n\t\tarcano: {arcano}\n\t--------------------------------\n Você tem {pontos} pontos para gastar nos atributos")
       optionsmenu = int(input("---------------------------------------------------------------------------------------------------------------------------\n\t\t\t\t\t\t OPÇÕES DO MENU\n---------------------------------------------------------------------------------------------------------------------------\n\ngastar pontos[1]\ninspecionar itens[2]\nTutorial do menu[3]\nSair do menu[4]\n"))
       
       #faz a distribuição de pontos
@@ -154,6 +90,10 @@ def menu():
             arcano += pontosgastos
             pontos -= pontosgastos
             print(f"OK, pontos foram gastos")
+         elif atributo == "resistencia":
+            resistencia += pontosgastos
+            pontos -= pontosgastos
+            print(f"OK, pontos foram gastos")
       #inspeciona os itens que tem no inventário
       #números dado para cada item no jogo: faca[1], pistola[2], munição[3], roupas_limpas[4]
       if optionsmenu == 2:
@@ -177,7 +117,7 @@ def menu():
             print("\nSeu inventário está vazio\n")
       #faz um tutorial para explicar as funcionalidades do menu
       if optionsmenu == 3:
-         print("\nATRIBUTOS: São seus status, oque define sua vida, sua força, seu nivel de reação\n\tVITALIDADE: Defini sua vida e ajuda em testes que exijam resistência\n\tFORÇA: define o quão forte você é e ajuda em testes que exijam força fisica\n\tREAÇÃO: define sua velocidade de reação, usada em testes que peça ao personagem para desviar de algo\n\tARCANO: melhora sua sorte para achar itens e também aumenta dano de armas elementais\n")
+         print("\nATRIBUTOS: São seus status, oque define sua vida, sua força, seu nivel de reação\n\tVITALIDADE: Defini sua vida, se ela zerar, acabou\n\tFORÇA: define o quão forte você é e ajuda em testes que exijam força fisica\n\tREAÇÃO: define sua velocidade de reação, usada em testes que peça ao personagem para desviar de algo\n\t RESISTÊNCIA: Ajuda em testes que exijam resistência(tanto fisica quanto mentaL)\n\tARCANO: melhora sua sorte para achar itens e também aumenta dano de armas elementais\n")
          print("INVENTÁRIO: Usado para mostrar quais itens você possui guardado\n")
       #simplesmente sai do menu
       if optionsmenu == 4:
@@ -196,6 +136,7 @@ print ("------------------------------------------------------------------------
 print("jogo feito pelo Paulino ;)")
 print("comandos:\ncontinuar\ninteragir\natacar\nmenu\nusar atributo\ncomandos")
 print("\n\n")
+time.sleep(2)
 print("""       _.-'''-._
      .'   .-'``|'.
     /    /    -*- 
@@ -219,42 +160,39 @@ while resposta1 not in "continuar":
       menu()
       resposta1 = input("O que quer fazer?\n")
     elif resposta1 == "atacar":
-     print("você socou o ar, nada acontece\n")
+     print("\nvocê socou o ar, nada acontece\n")
 
     elif resposta1 == "interagir":
-        print("você fechou a cortina, agr você enxerga melhor\n")
+        print("\nvocê fechou a cortina, agr você enxerga melhor\n")
         interagir = 1
 
     elif resposta1 == "usar atributo":
-       print("nenhum atributo pode ser usado aqui\n")
+       print("\nnenhum atributo pode ser usado aqui\n")
 
     elif resposta1 == "comandos":
-       print("Aqui estão todos os comandos possiveis:\ncomandos:\nnorte\nsul\nleste\noeste\npiscar\ninteragir\natacar\nmenu\nusar atributo\ncomandos\n")
+       print("\nAqui estão todos os comandos possiveis:\ncontinuar\ninteragir\natacar\nmenu\nusar atributo\ncomandos\n")
 
     elif resposta1 not in ["menu", "interagir", "atacar", "continuar", "usar atributo" ]:
-       print("comando não identificado, tente novamente")
+       print("\ncomando não identificado, tente novamente")
     resposta1 = input("O que quer fazer?\n")
 
 if resposta1 == "continuar":
    if interagir == 1:
-    print("percebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)")
+    print("\npercebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
    elif interagir == 0:
-      print("Como vai continuar sem exergar? O ADM abre a cortina a cortina para ti. percebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
+      print("\nComo vai continuar sem exergar? O ADM abre a cortina a cortina para ti. percebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
 
 resposta1 = input("O que quer fazer?\n")
 
 #você exerga e vê o quarto
 while resposta1 not in "continuar":
-    if resposta1 == "menu":
+   if resposta1 == "menu":
       menu()
-      opcoesmenu = input
       resposta1 = input("O que quer fazer?\n")
-
-    elif resposta1 == "interagir":
-       interaçoes = input("com o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\n") 
+   elif resposta1 == "interagir":
+       interaçoes = input("\ncom o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\n") 
        #usado para ver o que tem dentro da gaveta
-       if interaçoes == "gaveta\n":
-               #aqui já foi uma farm infinita de itens(bons tempos que não voltam mais)
+       if interaçoes == "gaveta":
          if verificar_quantidade(inventário, "pistola[2]") and verificar_quantidade(inventário, "faca[1]"):
             print("\nNão tem nada aqui(NÃO INSISTA!)\n")
          elif "pistola[2]" in inventário:
@@ -274,51 +212,63 @@ while resposta1 not in "continuar":
                print(f"Agora você tem {inventário['pistola[2]']}")
                resposta1 = input("O que quer fazer?\n")
 
+            #aqui já foi uma farm infinita de item(bons tempos que não voltam mais)
+
          else:
-             print("você abre a gaveta, tem uma pistola e uma faca dentro.")
+             print("\nvocê abre a gaveta, tem uma pistola e uma faca dentro.\n")
              yesnot = input("o que você quer pegar?\nfaca\npistola\n\nOBS: digite exatamente como escrito acima para que prossiga\n")
              if yesnot == "pistola":
                print("pegou a pistola[2]")
                adicionar_item(inventário, "pistola[2]", 1)
-               print(f"Agora você tem {inventário['pistola[2]']}")
+               print(f"Agora você tem {inventário['pistola[2]']} pistola\n")
                resposta1 = input("O que quer fazer?\n")
              elif yesnot == "faca":
                print("pegou a faca")
                adicionar_item(inventário, "faca[1]", 1)
-               print(f"Agora você tem {inventário['faca[1]']}")
+               print(f"Agora você tem {inventário['faca[1]']} faca\n")
                resposta1 = input("O que quer fazer?\n")
        if interaçoes == "armário":
-          girarD20()
-          valor_aleatorio += arcano
-          if valor_aleatorio <= 10:
-             print("não tem nada no armário")
-             resposta1 = input("O que quer fazer?\n")
-          else:
-            yesnot = input("Tem um cesto de roupas, quer dar uma olhada?\nsim\nnao")
-            if yesnot == "sim":
-               girarD20()
-               if valor_aleatorio <= 10:
-                  print("tinha várias aranhas, elas pularam na sua cara, você se espantou e fechou o armário")
-                  resposta1 = input("O que quer fazer?\n")
-               else:
-                  print("Você achou roupas limpas!")
-                  adicionar_item(inventário, "roupas_limpas[4]", 1)
-                  resposta1 = input("O que quer fazer?\n")
+         if interagir == 2:
+            print("Sem mais interações por aqui\n")
+            resposta1 = input("O que quer fazer?\n")
+         if interagir != 2:
+            girarD20()
+            valor_aleatorio += arcano
+            if valor_aleatorio < 10:
+               print("não tem nada no armário")
+               interagir = 2
+               resposta1 = input("O que quer fazer?\n")
+            else:
+               yesnot = input("Tem um cesto de roupas, quer dar uma olhada?\nsim\nnao\n")
+               if yesnot == "sim":
+                  girarD20()
+                  if valor_aleatorio < 10:
+                     print("tinha várias aranhas, elas pularam na sua cara, você se espantou e fechou o armário")
+                     interagir = 2
+                     resposta1 = input("O que quer fazer?\n")
+                  else:
+                     print("Você achou roupas limpas!")
+                     adicionar_item(inventário, "roupas_limpas[4]", 1)
+                     interagir = 2
+                     resposta1 = input("O que quer fazer?\n")
                   
-    elif resposta1 == "atacar":
+   elif resposta1 == "atacar":
      print("você socou o ar, nada acontece\n")
 
-    elif resposta1 == "usar atributo":
+   elif resposta1 == "usar atributo":
        print("nenhum atributo pode ser usado aqui\n")
 
-    elif resposta1 == "comandos":
-       print("Aqui estão todos os comandos possiveis:\ncomandos:\nnorte\nsul\nleste\noeste\npiscar\ninteragir\natacar\nmenu\nusar atributo\ncomandos\n")
+   elif resposta1 == "comandos":
+       print("Aqui estão todos os comandos possiveis:\ncontinuar\ninteragir\natacar\nmenu\nusar atributo\ncomandos\n")
 
-    elif resposta1 not in ["menu", "interagir", "atacar", "norte", "sul", "oeste", "leste", "usar atributo" ]:
+   elif resposta1 not in ["menu", "interagir", "atacar", "norte", "sul", "oeste", "leste", "usar atributo" ]:
        print("comando não identificado, tente novamente")
        resposta1 = input("O que quer fazer?\n")
 
 if resposta1 == "continuar":
-    print("você saiu do quarto, você está em um corredor com várias portas\n")
+    print("\nvocê saiu do quarto, você está em um corredor com várias portas\n")
 
 resposta1 = input("O que quer fazer?\n")
+if resposta1 == "atacar":
+   girarD20()
+   usar_atributo(valor_aleatorio)
