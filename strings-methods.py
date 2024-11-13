@@ -9,6 +9,8 @@ print ("olá /"amigo/" ")
 #MÉTODOS DE STRING:
 """
 nome = input("fala teu nome:\n")
+
+
 #deixa em minusculo
 print(f"lower\nolá, {nome.lower()}")
 
@@ -48,7 +50,7 @@ print(frase.find(nome))
 # forma para usar mais de um metodo na mesma string:
 nome = input("fala seu nome e o primeiro sobrenome: ")
 
-nome, sobrenome = nome.split() 
+nome, sobrenome = nome.split()
 nome_completo = nome + " " + sobrenome
 
 print(f"olá, {nome_completo.title()}")
