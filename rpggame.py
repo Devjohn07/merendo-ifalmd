@@ -260,6 +260,16 @@ while resposta1 not in "continuar":
                      interagir = 2
                      resposta1 = input("O que quer fazer?\n")
 
+       elif interaçoes == "janela":
+          print("A luz ainda da lua ainda está lá fora, brilhando como nunca, você ainda consegue enxergar toda uma cidade pela janela, completamente vazia")
+          interaçoes = input("\ncom o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\n")
+       
+       elif interaçoes == "cama":
+         girarD20
+         if valor_aleatorio <10:
+            print("Você oha embaixo da cama e acha um gato... azul?? Parece amigável(e estranhamente familiar)")
+         else:
+            print("Você achou uma... espinha de peixe?? (parece velha)")
        elif interaçoes not in ["gaveta", "armário", "janela", "cama"]:
          print("\nComando não identificado")
          resposta1 = input("O que quer fazer?\n")
