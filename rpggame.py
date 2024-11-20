@@ -22,34 +22,35 @@ def usar_atributo(valor):
 
 #imprime o inventário no menu
 def imprimir_inventario(inventário):
-    print("Inventário:")
-    for item, quantidade in inventário.items():
-        print(f"{item}: {quantidade}")
+   print("Inventário:")
+   for item, quantidade in inventário.items():
+      print(f"{item}: {quantidade}")
 
 #Verifica a quantidade de intens no inventário(usado principalmente para que o usuário sempre pegue uma quantidade especifica de itens nas cenas)
 def verificar_quantidade(inventário, item):
-    if item in inventário and inventário[item] >= 1:
-        return True
-    else:
-        return False
-
+   if item in inventário and inventário[item] >= 1:
+      return True
+   else:
+      return False
+   
 def adicionar_item(inventário, item, quantidade):
-    # Se o item já está no inventário, apenas aumenta a quantidade
-    if item in inventário:
-        inventário[item] += quantidade
-    # Caso o item não exista, ele é adicionado com a quantidade informada
-    else:
-        inventário[item] = quantidade
-    print(f"\n{quantidade} unidades de {item} foram adicionadas.")
+   # Se o item já está no inventário, apenas aumenta a quantidade
+   if item in inventário:
+      inventário[item] += quantidade
+
+   # Caso o item não exista, ele é adicionado com a quantidade informada
+   else:
+      inventário[item] = quantidade
+      print(f"\n{quantidade} unidades de {item} foram adicionadas.")
 """
-Usando a função para adicionar 20 munições
+EXEMPLO DE USO DA FUNÇÃO DE ADICIONAR ITENS:
+
 adicionar_item(inventario, "munição", 20)
 print(f"Agora você tem {inventario['munição']} munições.")
-"""
+"""  
 
 #menu do jogo
 def menu():
-
 
    while resposta1 not in ("continuar", "interagir", "atacar", "usar atributo", "comandos"):
       global weapon
@@ -101,22 +102,43 @@ def menu():
       #inspeciona os itens que tem no inventário
       #números dado para cada item no jogo: faca[1], pistola[2], munição[3], roupas_limpas[4]
       if optionsmenu == 2:
-         if inventário == True:
+         if bool(inventário) == True:
             print(inventário)
-            item = int(input("qual item quer inspecionar?"))
-            if item == 1:
-               if verificar_quantidade() == True:
-                  print("uma faca que você encontrou numa gaveta no quarto inicial, simples porém efetiva(1d5 de dano sem bonus externos)")
-            if item == 2:
-               if verificar_quantidade() == True:
-                  print("uma pistola encontrada no quarto incial, encontrada sem balas, será que tem algumas por ai?(1d10 de dano sem bonus externos)")
-            if item == 3:
-               if "munição[3]" in inventário:
-                  if verificar_quantidade() == True:
-                     print("Uma simples mnição que muda de acordo com a arma, ela não é tão forte, porém funciona(+2 no dano com qualquer arma)")
-            if item == 4:
-               if verificar_quantidade() == True:
-                  print("roupas limpas, elas possuem uma defesa razoável e são definitivamente seguras(+5 vitalidade)")
+            item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+            while item not in [5]:
+               if item == 1:
+                  if verificar_quantidade(inventário, "faca[1]") == True:
+                     print("uma faca que você encontrou numa gaveta no quarto inicial, simples porém efetiva(1d5 de dano sem bonus externos)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                  else:
+                     print("\nVocê não possui esse item no inventário\n")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+               if item == 2:
+                  if verificar_quantidade(inventário, "pistola[2]") == True:
+                     print("uma pistola encontrada no quarto incial, encontrada sem balas, será que tem algumas por ai?(1d10 de dano sem bonus externos)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                  else:
+                     print("\nVocê não possui esse item no inventário\n")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+               if item == 3:
+                  if verificar_quantidade(inventário, "munição[3]") == True:
+                     print("Uma simples munição que muda de acordo com a arma, ela não é tão forte, porém funciona(+2 no dano com qualquer arma, além do fato de que agora você consegue usar uma arma, se a mesma permitir essa munição)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                  else:
+                     print("\nVocê não possui esse item no inventário\n")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+               if item == 4:
+                  if verificar_quantidade(inventário, "roupas_limpas[4]") == True:
+                     print("roupas limpas, elas possuem uma defesa razoável e são definitivamente seguras(+5 vitalidade)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                  else:
+                     print("\nVocê não possui esse item no inventário\n")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+               if item not in [1, 2, 3, 4, 5]:
+                  print("Comando não identificado")
+                  item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+            if item == 5:
+                  print("")
          else:
             print("\nSeu inventário está vazio\n")
 
@@ -193,7 +215,8 @@ while resposta1 not in "continuar":
       menu()
       resposta1 = input("O que quer fazer?\n")
    elif resposta1 == "interagir":
-       interaçoes = input("\ncom o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\n") 
+       interaçoes = input('\ncom o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\nOBS: digite o comando "sair" para se retirar das interações\n') 
+
        #usado para ver o que tem dentro da cada interação
        if interaçoes == "gaveta":
          if verificar_quantidade(inventário, "pistola[2]") and verificar_quantidade(inventário, "faca[1]"):
@@ -206,7 +229,7 @@ while resposta1 not in "continuar":
             print("pegou a faca")
             adicionar_item(inventário, "faca[1]", 1)
             print(f"Agora você tem {inventário['faca[1]']}")
-            resposta1 = input("O que quer fazer?\n")
+
 
          elif "faca[1]" in inventário:
              print("você abre a gaveta, tem uma pistola dentro.")
@@ -215,7 +238,7 @@ while resposta1 not in "continuar":
                print("pegou a pistola[2]")
                adicionar_item(inventário, "pistola[2]", 1)
                print(f"Agora você tem {inventário['pistola[2]']}")
-               resposta1 = input("O que quer fazer?\n")
+
 
             #aqui já foi uma farm infinita de item(bons tempos que não voltam mais)
 
@@ -226,13 +249,12 @@ while resposta1 not in "continuar":
                print("pegou a pistola[2]")
                adicionar_item(inventário, "pistola[2]", 1)
                print(f"Agora você tem {inventário['pistola[2]']} pistola\n")
-               resposta1 = input("O que quer fazer?\n")
+
              elif yesnot == "faca":
                print("pegou a faca")
                adicionar_item(inventário, "faca[1]", 1)
                print(f"Agora você tem {inventário['faca[1]']} faca\n")
-               resposta1 = input("O que quer fazer?\n")
-
+  
        elif interaçoes == "armário":
          if interagir == 2:
             print("Sem mais interações por aqui\n")
@@ -261,18 +283,25 @@ while resposta1 not in "continuar":
                      resposta1 = input("O que quer fazer?\n")
 
        elif interaçoes == "janela":
-          print("A luz ainda da lua ainda está lá fora, brilhando como nunca, você ainda consegue enxergar toda uma cidade pela janela, completamente vazia")
-          interaçoes = input("\ncom o que deseja interagir?\ngaveta\narmário\njanela\ncama\n\n")
-       
+          print("\nA luz da lua ainda está lá fora, brilhando como nunca.\nVocê ainda consegue enxergar toda uma cidade pela janela, completamente vazia")
+                
        elif interaçoes == "cama":
-         girarD20
-         if valor_aleatorio <10:
-            print("Você oha embaixo da cama e acha um gato... azul?? Parece amigável(e estranhamente familiar)")
+         if interagir == 10:
+            print("\nNão tem mais nada aqui(NÃO INSISTA!)")
          else:
-            print("Você achou uma... espinha de peixe?? (parece velha)")
+            girarD20()
+            if valor_aleatorio < 7:
+               print("Você achou uma... espinha de peixe?? (parece velha)\n\nNada de mais acontece")
+               interagir = 10
+            else:
+               print("Você oha embaixo da cama e acha um gato... azul?? Parece amigável(e estranhamente familiar)")
+               interagir = 10
+
+       elif interaçoes == "sair":
+         resposta1 = input("O que quer fazer?\n")
+         
        elif interaçoes not in ["gaveta", "armário", "janela", "cama"]:
          print("\nComando não identificado")
-         resposta1 = input("O que quer fazer?\n")
    elif resposta1 == "atacar":
      print("você socou o ar, nada acontece\n")
 
@@ -282,7 +311,7 @@ while resposta1 not in "continuar":
 
    elif resposta1 not in ["menu", "interagir", "atacar", "norte", "sul", "oeste", "leste", "usar atributo" ]:
        print("comando não identificado, tente novamente")
-       resposta1 = input("O que quer fazer?\n")
+       resposta1 = input("\nO que quer fazer?\n")
 
 if resposta1 == "continuar":
     print("\nvocê saiu do quarto, você está em um corredor com várias portas\n")
