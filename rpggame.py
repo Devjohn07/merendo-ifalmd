@@ -184,26 +184,31 @@ while resposta1 not in ["menu", "interagir", "atacar", "continuar", "comandos"]:
     resposta1 = input("O que quer fazer?\n")
 
 while resposta1 not in "continuar":
-    if resposta1 == "menu":
+    
+   if resposta1 not in ["menu", "interagir", "atacar", "continuar", "comandos"]:
+      while True:
+         print("comando não identificado, tente novamente")
+         resposta1 = input("O que quer fazer?\n")
+
+   elif resposta1 == "menu":
       menu()
       resposta1 = input("O que quer fazer?\n")
-    elif resposta1 == "atacar":
+
+   elif resposta1 == "atacar":
      print("\nvocê socou o ar, nada acontece\n")
+     resposta1 = input("O que quer fazer?\n")
 
-    elif resposta1 == "interagir":
-        print("\nvocê fechou a cortina, agr você enxerga melhor\n")
-        interagir = 1
+   elif resposta1 == "interagir":
+      print("\nvocê fechou a cortina, agr você enxerga melhor\n")
+      interagir = 1
+      resposta1 = input("O que quer fazer?\n")
 
-    elif resposta1 == "comandos":
-       print("\nAqui estão todos os comandos possiveis:\ncontinuar\ninteragir\natacar\nmenu\nusar atributo\ncomandos\n")
-
-    elif resposta1 not in ["menu", "interagir", "atacar", "continuar"]:
-       print("\ncomando não identificado, tente novamente")
-    resposta1 = input("O que quer fazer?\n")
-
+   elif resposta1 == "comandos":
+      print("\nAqui estão todos os comandos possiveis:\ncontinuar\ninteragir\natacar\nmenu\nusar atributo\ncomandos\n")
+      resposta1 = input("O que quer fazer?\n")
 if resposta1 == "continuar":
    if interagir == 1:
-    print("\npercebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
+      print("\npercebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
    elif interagir == 0:
       print("\nComo vai continuar sem exergar? O ADM fecha a cortina para ti. percebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
 
@@ -304,6 +309,7 @@ while resposta1 not in "continuar":
          print("\nComando não identificado")
    elif resposta1 == "atacar":
      print("você socou o ar, nada acontece\n")
+     resposta1 = input("O que quer fazer?\n")
 
 
    elif resposta1 == "comandos":
