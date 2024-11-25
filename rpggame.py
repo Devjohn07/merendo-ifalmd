@@ -104,39 +104,39 @@ def menu():
       if optionsmenu == 2:
          if bool(inventário) == True:
             print(inventário)
-            item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+            item = int(input('\n\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
             while item not in [5]:
                if item == 1:
                   if verificar_quantidade(inventário, "faca[1]") == True:
-                     print("uma faca que você encontrou numa gaveta no quarto inicial, simples porém efetiva(1d5 de dano sem bonus externos)")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     print("\numa faca que você encontrou numa gaveta no quarto inicial, simples porém efetiva(1d5 de dano sem bonus externos)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                   else:
                      print("\nVocê não possui esse item no inventário\n")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                if item == 2:
                   if verificar_quantidade(inventário, "pistola[2]") == True:
-                     print("uma pistola encontrada no quarto incial, encontrada sem balas, será que tem algumas por ai?(1d10 de dano sem bonus externos)")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     print("\numa pistola encontrada no quarto incial, encontrada sem balas, será que tem algumas por ai?(1d10 de dano sem bonus externos)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                   else:
                      print("\nVocê não possui esse item no inventário\n")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                if item == 3:
                   if verificar_quantidade(inventário, "munição[3]") == True:
-                     print("Uma simples munição que muda de acordo com a arma, ela não é tão forte, porém funciona(+2 no dano com qualquer arma, além do fato de que agora você consegue usar uma arma, se a mesma permitir essa munição)")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     print("\nUma simples munição que muda de acordo com a arma, ela não é tão forte, porém funciona(+2 no dano com qualquer arma, além do fato de que agora você consegue usar uma arma, se a mesma permitir essa munição)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                   else:
                      print("\nVocê não possui esse item no inventário\n")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                if item == 4:
                   if verificar_quantidade(inventário, "roupas_limpas[4]") == True:
-                     print("roupas limpas, elas possuem uma defesa razoável e são definitivamente seguras(+5 vitalidade)")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     print("\nroupas limpas, elas possuem uma defesa razoável e são definitivamente seguras(+5 vitalidade)")
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                   else:
                      print("\nVocê não possui esse item no inventário\n")
-                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                     item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
                if item not in [1, 2, 3, 4, 5]:
                   print("Comando não identificado")
-                  item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens'))
+                  item = int(input('\nqual item quer inspecionar?\n\nOBS: digite 5 para se retirar do menu de inspeção de itens\n'))
             if item == 5:
                   print("")
          else:
@@ -205,7 +205,7 @@ if resposta1 == "continuar":
    if interagir == 1:
     print("\npercebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
    elif interagir == 0:
-      print("\nComo vai continuar sem exergar? O ADM abre a cortina a cortina para ti. percebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
+      print("\nComo vai continuar sem exergar? O ADM fecha a cortina para ti. percebe-se que tu se encontras em um quarto estranhamente familiar, porém você não faz a menor idéia de onde esteja(o quarto não parece ter nada de mais)\n")
 
 resposta1 = input("O que quer fazer?\n")
 
