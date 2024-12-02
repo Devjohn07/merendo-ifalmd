@@ -1,18 +1,27 @@
 def main():
-    calc = input("Digite a operação (ex: 5 + 3): ").strip()
-    calculo(calc)
+    numeros = input("digite os valores como no exemplo a seguir(10 + 5) --> ").split()
+    calc(numeros[0], numeros[1], numeros[2])
 
-"""
-"eval" é uma função que pega uma string e lê ela como se não fosse uma string
-Por exemplo, se eu tiver a string: "10 + 4" em vez dele ler ela como uma string,
-ele vai ler ela como literalmente 10 + 4
-"""
+def calc(num1, operador, num2):
+    num1 = int(num1)
+    num2 = int(num2)
 
-def calculo(numeros):
-    resultado = eval(numeros)
-    if resultado == eval(numeros):
-      print(f"Resultado: {resultado}")
+    if operador == "-":
+        print(num1 - num2)
+    
+    if operador == "+":
+        print(num1 + num2)
+    
+    if operador == "/":
+        print(num1 / num2)
+    
+    if operador == "*":
+        print(num1 * num2)
+    
+    if operador == "**":
+        print(num1 - num2)
+
     else:
-        print("Erro: Entrada inválida. Use números e operadores válidos (+, -, *, /).")
+        print("Operador não identificado")
 
 main()
