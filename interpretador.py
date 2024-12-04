@@ -3,8 +3,8 @@ def main():
     calc(numeros[0], numeros[1], numeros[2])
 
 def calc(num1, operador, num2):
-    num1 = int(num1)
-    num2 = int(num2)
+    num1 = float(num1)
+    num2 = float(num2)
 
     if operador == "-":
         print(num1 - num2)
