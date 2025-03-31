@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <title>Registro</title>
+    </head>
+
+    <body>
+        <form method="post">
+
+                 Email:         
+            <input autofocus autocomplete="off" name="Email" type="email" pattern=".+@.+\..+\.edu\.\D{2}" required>
+
+            <p></p>
+
+            N° de telefone:
+            <input  autocomplete="on" placeholder="N° telefone (99) 99999-9999" name="number" type="text" pattern="\(\d{2}\) \d{5}-\d{4}" required>
+
+            <p></p>
+
+                 Senha:          
+            <input  autocomplete="off" placeholder="Senha" name="password" type="password" required>
+
+            <p></p>
+
+                                                   <button>REGISTRAR</button>
+
+        </form>
+        
+
+    </body>
+
+</html>
+
+<!--
+    Method = escolhe entre o metodo GET e POST
+    value = valor escrito no botão
+    name = Nome do elemento. Por exemplo usado pelo servidor para identificar os campos no envio do formulário
+    GET = Soliticitar informação
+    POST = passa dados sigilosos
+    Name "q" = Query pedido de pesquisa pro google
+    Autofocus =
+-->
