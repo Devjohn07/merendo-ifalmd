@@ -1,0 +1,17 @@
+    /*atributos em CSS para o arquivo*/
+
+.body{text-align: center;}
+
+            
+.header{
+    font-size: xx-large;
+    font-weight: bold;
+    }
+
+.color{
+    color: #000000;
+}
+
+.main{font-size: large; color: #6506f3;}
+
+.footer{font-size: x-small;}
